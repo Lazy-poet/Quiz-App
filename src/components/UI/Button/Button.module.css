@@ -1,0 +1,44 @@
+.Button{
+  background-color: transparent;
+  border: 1px solid #5c61c2;
+  border-radius: 7px;
+  color:#5c61c2;
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 10px 17px;
+  margin: 10px 0;
+  font-weight: 400;
+  display: block;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  text-align: left
+}
+.Button span{
+  margin-right: 30px;
+}
+/* .Button:hover{
+  border: none;
+  color: #fff;
+
+   background-color: #f9aa2b; 
+} */
+
+.Correct{
+  background-color: #60be88;
+  color: #fff;
+  border: none;
+
+}
+
+.Wrong{
+  
+  color: #fff;
+  background-color: #ea8082;
+
+
+  border: none;
+}

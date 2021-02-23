@@ -1,0 +1,19 @@
+.Question{
+  text-align: left;
+  margin: 20px 20px 10px;
+ 
+}
+.Question h2{
+   font-size: 1.1rem;
+   color: #1c355d;
+   letter-spacing: .7px;
+   line-height: 1.5;
+   font-weight: bold;
+}
+.Question img{
+  width: 75px;
+  height: auto;
+  display: block;
+  margin-right: auto;
+  margin-bottom: 15px;
+}

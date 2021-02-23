@@ -1,0 +1,23 @@
+.Quiz{
+  height: fit-content;
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  padding: 10px 0;
+  display: flex;
+  flex-flow: column;
+  /* align-items: center; */
+  justify-content: space-evenly;
+}
+
+.Next{
+   width: 100px;
+   margin-left: calc(100% - 140px)
+}
+.Next Button{
+ border: none;
+  background: #f9aa2b;
+  color: #fff;
+  justify-content: center
+}

@@ -1,0 +1,15 @@
+.LastPage{
+  max-width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  color: #1c355d
+
+}
+
+.LastPage img{
+  width: 80%;
+  height: auto;
+}

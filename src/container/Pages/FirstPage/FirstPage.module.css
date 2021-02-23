@@ -1,0 +1,39 @@
+.FirstPage{
+  max-width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  color: #1c355d
+}
+.FirstPage img{
+  width: 80%;
+  height: auto;
+
+}
+
+.FirstPage h1{
+  margin: 20px;
+ 
+}
+
+.FirstPage p{
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.5;
+
+}
+
+.FirstPage Button{
+  justify-content: center;
+  width: 50%;
+  border: 1px solid #1c355d;
+  color: inherit;
+  transition: all .5s ease
+}
+
+.FirstPage Button:hover{
+  color: #fff;
+  background-color: #1c355d
+}
