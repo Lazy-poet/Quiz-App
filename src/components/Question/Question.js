@@ -1,5 +1,4 @@
-import React, {useEffect} from 'react';
-import Button from '../UI/Button/Button';
+import React from 'react';
 import classes from './Question.module.css'
 const Question = (props) => {
   // const index = Math.floor(Math.random() * 200 + 1);
@@ -8,7 +7,7 @@ const Question = (props) => {
   // useEffect(()=>console.log(props.data), [])
   let question = null;
   if(props.quizData.type === 'flag'){
-    question = <img src={props.quizData.value}/>
+    question = <img src={props.quizData.value} alt=""/>
   }
   else{
     question = props.quizData.value
