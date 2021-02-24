@@ -1,14 +1,17 @@
 .Quiz{
-  height: fit-content;
-  width: 300px;
+  min-height: 400px;
+  width: 320px;
   background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(15px);
   border-radius: 15px;
-  padding: 10px 0;
+  padding: 20px 0;
   display: flex;
   flex-flow: column;
   /* align-items: center; */
   justify-content: space-evenly;
+  transition: height .4s ease;
+  position: relative;
+  
 }
 
 .Next{
@@ -20,4 +23,21 @@
   background: #f9aa2b;
   color: #fff;
   justify-content: center
+}
+
+.Quiz .LastPage{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.TopImage{
+  width: 120px;
+  height: auto;
+  position: absolute;
+  top: 0;
+  transform: translateY(calc(-50% - 7.5px));
+  right: 0;
+  padding-bottom: 15px;
 }

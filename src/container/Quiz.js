@@ -5,16 +5,20 @@ import classes from './Quiz.module.css'
 import Options from '../components/Options/Options';
 import FirstPage from './Pages/FirstPage/FirstPage';
 import LastPage from './Pages/LastPage/LastPage'
-import Button from '../components/UI/Button/Button'
+import Button from '../components/UI/Button/Button';
+import image from '../assets/undraw_adventure_4hum.svg'
 class Quiz extends Component {
 
   state = {
     data: [],
     start: false,
     quizData:[],
-    questionsAnswered: -1,
+    estioqunsAnswered: -1,
     answeredCorrectly: 0,
-    showNext: true
+    showNext: true,
+    endQuiz: false,
+    wrongAnswer: false,
+    showImage: false
   }
 
   fetchData = async () =>{
@@ -38,13 +42,14 @@ class Quiz extends Component {
   }
   
 startQuiz = () =>{
-    this.setState({start: true});
+    this.setState({start: true, showImage: true});
     this.nextQuestionHandler()
     console.log(this.state.start)
   }
 
   restartQuiz = () =>{
-    window.location.reload(false)
+    //window.location.reload(false);
+    this.setState({start: false, endQuiz: false, answeredCorrectly: 0, showNext: true, wrongAnswer: false})
   }
 
   capitalQuestionHandler = () => {
@@ -80,6 +85,11 @@ startQuiz = () =>{
         questionsAnswered: state.questionsAnswered + 1,
         showNext: !state.showNext
       }))
+
+      if(this.state.wrongAnswer){
+        this.endQuiz();
+        this.setState({showImage: false})
+      }
     }
     
 
@@ -89,7 +99,12 @@ startQuiz = () =>{
     showNext = () => {
       this.setState({showNext: true})
     }
-  
+    wrongAnswer = () =>{
+      this.setState({wrongAnswer: true})
+    }
+  endQuiz =()=>{
+    this.setState({endQuiz: true})
+  }
   render(){
 
     const Next = this.state.showNext ? (
@@ -103,14 +118,15 @@ startQuiz = () =>{
         <div className={classes.Quiz}>
     { !this.state.start ? <FirstPage click={this.startQuiz}/>: (
     <>
+    {this.state.showImage ? <img src={image} className={classes.TopImage} alt="" /> : null}
      <Question data={this.state.data} quizData={this.state.quizData}/>
-   <Options quizData={this.state.quizData} disabled={this.state.showNext} showNext = {this.showNext} correct ={this.answeredCorrectly} /> 
+   <Options wrong={this.wrongAnswer} quizData={this.state.quizData} disabled={this.state.showNext} showNext = {this.showNext} correct ={this.answeredCorrectly} /> 
      {Next}
    </>)}</div>
     
       )
-      if(this.state.questionsAnswered === 10){
-        display= (<div className={classes.Quiz}><LastPage correct={this.state.answeredCorrectly} click={this.restartQuiz} /></div>)
+      if(this.state.endQuiz && this.state.start){
+        display= (<div className={classes.Quiz}><LastPage className={classes.LastPage} correct={this.state.answeredCorrectly} click={this.restartQuiz} /></div>)
       }
   return display
     }

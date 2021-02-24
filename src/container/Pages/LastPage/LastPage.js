@@ -7,7 +7,7 @@ const LastPage = (props) => {
     <div className={classes.LastPage}>
       <img src={image} alt="" />
       <h1>Results</h1>
-      <p>You got <span>{props.correct}</span> correct answers</p>
+      <p>You got <span>{props.correct}</span> correct {props.correct > 1 ? "answers" : "answer"}</p>
       <Button click={props.click}>Try again</Button>
     </div>
   );
