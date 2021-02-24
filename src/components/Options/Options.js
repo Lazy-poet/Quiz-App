@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Option from './Option/Option';
 import classes from './Options.module.css'
 
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+//import CheckCircleOutlineIcon '@material-ui/icons/CheckCircleOutline';
 //import CancelIcon from '@material-ui/icons/Cancel';
 
 class Options extends Component {
@@ -70,15 +70,13 @@ class Options extends Component {
             btntype={this.state.quizData.answers[1].status}
             click={(e) => this.clickHandler(e, 1, this.state.quizData.answers[1].option)}
           >
-            <span>B.</span> {this.state.quizData.answers[1].option} <CheckCircleOutlineIcon />
-          </Option>
+            <span>B.</span> {this.state.quizData.answers[1].option}  CheckCircleOutlineIcon         </Option>
           <Option
             disabled={this.props.disabled}
             btntype={this.state.quizData.answers[2].status}
             click={(e) => this.clickHandler(e, 2, this.state.quizData.answers[2].option)}
           >
-            <span>C.</span>{this.state.quizData.answers[2].option} <CheckCircleOutlineIcon />
-          </Option>
+            <span>C.</span>{this.state.quizData.answers[2].option}  CheckCircleOutlineIcon         </Option>
           <Option
             disabled={this.props.disabled}
             btntype={this.state.quizData.answers[3].status}
