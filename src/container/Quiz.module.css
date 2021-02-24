@@ -41,3 +41,19 @@
   right: 0;
   padding-bottom: 15px;
 }
+
+.Text{
+  display: block;
+  position: absolute;
+  text-align: left;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  top: -40px;
+ height: 80px;
+ text-transform: uppercase;
+ letter-spacing: 2px;
+
+
+
+}

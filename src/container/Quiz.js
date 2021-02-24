@@ -116,6 +116,7 @@ startQuiz = () =>{
     ): null
       let display = (
         <div className={classes.Quiz}>
+          <div className={classes.Text}>Country Quiz</div>
     { !this.state.start ? <FirstPage click={this.startQuiz}/>: (
     <>
     {this.state.showImage ? <img src={image} className={classes.TopImage} alt="" /> : null}
@@ -126,7 +127,9 @@ startQuiz = () =>{
     
       )
       if(this.state.endQuiz && this.state.start){
-        display= (<div className={classes.Quiz}><LastPage className={classes.LastPage} correct={this.state.answeredCorrectly} click={this.restartQuiz} /></div>)
+        display= (<div className={classes.Quiz}>
+          <div className={classes.Text}>Country Quiz</div>
+          <LastPage className={classes.LastPage} correct={this.state.answeredCorrectly} click={this.restartQuiz} /></div>)
       }
   return display
     }

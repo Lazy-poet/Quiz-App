@@ -10,6 +10,7 @@ class App extends Component{
    // const display= 
   return (
     <div className="App">
+      
       <Quiz />
     </div>
 
