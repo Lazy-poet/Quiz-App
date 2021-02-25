@@ -136,9 +136,9 @@ class Quiz extends Component {
   }
 
   nextQuestionHandler = () => {
-    let i = Math.floor(Math.random() * 20);
-    if (i > 7) this.capitalQuestionHandler();
-    else if(i > 13) this.flagQuestionHandler();
+    let i = Math.floor(Math.random() * 12);
+    if (i < 4) this.capitalQuestionHandler();
+    else if(i >= 5 && i < 8) this.flagQuestionHandler();
     else this.continentQuestionHandler();
     console.log(i);
     this.setState(state => ({
