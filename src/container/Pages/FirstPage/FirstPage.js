@@ -8,7 +8,7 @@ const FirstPage = (props) => {
       <img src={image} alt="" />
       <h1>Welcome</h1>
       <p>Test your knowledge of the countries of the world by answering as much questions as you can correctly</p>
-      <Button click={props.click}>Continue</Button>
+      <Button click={props.click}>Start Quiz</Button>
     </div>
   );
 };

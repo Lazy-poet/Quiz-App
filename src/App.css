@@ -16,3 +16,13 @@
   box-sizing: border-box;
 }
 
+.App > p{
+  position: absolute;
+  bottom: 10px;
+  font-size: .7rem;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 1px
+
+}
+

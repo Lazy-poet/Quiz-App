@@ -8,6 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <Quiz />
+        <p>created by Roro- devChallenges.io</p>
       </div>
     );
   }
