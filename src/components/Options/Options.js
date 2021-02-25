@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Option from './Option/Option';
 import classes from './Options.module.css'
-
-//import CheckCircleOutlineIcon '@material-ui/icons/CheckCircleOutline';
-//import CancelIcon from '@material-ui/icons/Cancel';
+import { BiCheckCircle, BiXCircle } from "react-icons/bi"
 
 class Options extends Component {
   state = {
@@ -18,9 +16,6 @@ class Options extends Component {
     }
   }
 
-  correctAnswerHandler = () => {
-
-  }
 
   showAnswer = (idx, id) => {
     const answer = this.state.quizData.answer;
@@ -63,28 +58,36 @@ class Options extends Component {
             btntype={this.state.quizData.answers[0].status}
             click={(e) => this.clickHandler(e, 0, this.state.quizData.answers[0].option)}
           >
-            <span>A.</span> {this.state.quizData.answers[0].option} 
+            <span>A.</span>
+            <span>{this.state.quizData.answers[0].option} </span>
+            <i>{this.state.quizData.answers[0].status === "Correct" ? <BiCheckCircle /> : this.state.quizData.answers[0].status === "Wrong" ? <BiXCircle /> : null}</i>
           </Option>
           <Option
             disabled={this.props.disabled}
             btntype={this.state.quizData.answers[1].status}
             click={(e) => this.clickHandler(e, 1, this.state.quizData.answers[1].option)}
           >
-            <span>B.</span> {this.state.quizData.answers[1].option}  
-            </Option>
+            <span>B.</span>
+            <span>{this.state.quizData.answers[1].option} </span>
+            <i>{this.state.quizData.answers[1].status === "Correct" ? <BiCheckCircle /> : this.state.quizData.answers[1].status === "Wrong" ? <BiXCircle /> : null}</i>
+          </Option>
           <Option
             disabled={this.props.disabled}
             btntype={this.state.quizData.answers[2].status}
             click={(e) => this.clickHandler(e, 2, this.state.quizData.answers[2].option)}
           >
-            <span>C.</span>{this.state.quizData.answers[2].option}  
-            </Option>
+            <span>C.</span>
+            <span>{this.state.quizData.answers[2].option} </span>
+            <i>{this.state.quizData.answers[2].status === "Correct" ? <BiCheckCircle /> : this.state.quizData.answers[2].status === "Wrong" ? <BiXCircle /> : null}</i>
+          </Option>
           <Option
             disabled={this.props.disabled}
             btntype={this.state.quizData.answers[3].status}
             click={(e) => this.clickHandler(e, 3, this.state.quizData.answers[3].option)}
           >
-            <span>D.</span> {this.state.quizData.answers[3].option}
+            <span>D.</span>
+            <span>{this.state.quizData.answers[3].option} </span>
+            <i>{this.state.quizData.answers[3].status === "Correct" ? <BiCheckCircle /> : this.state.quizData.answers[3].status === "Wrong" ? <BiXCircle /> : null}</i>
           </Option>
         </div>) : <p>Loading Questions</p>}</>
     );

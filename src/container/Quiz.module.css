@@ -7,9 +7,8 @@
   padding: 20px 0;
   display: flex;
   flex-flow: column;
-  /* align-items: center; */
   justify-content: space-evenly;
-  transition: height .4s ease;
+  transition: all .4s ease-out;
   position: relative;
   
 }
