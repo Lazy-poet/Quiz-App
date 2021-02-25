@@ -26,7 +26,11 @@ class Quiz extends Component {
     try {
       const resp = await axios.get('https://restcountries.eu/rest/v2/all')
       const newData = resp.data.map(item => {
-        return { name: item.name, capital: item.capital, flag: item.flag, continent: item.region }
+        return { 
+          name: item.name, 
+          capital: item.capital, 
+          flag: item.flag, 
+          continent: item.region }
       })
       this.setState({ data: newData })
       console.log(this.state.data);
@@ -47,24 +51,63 @@ class Quiz extends Component {
     console.log(this.state.start)
   }
 
-  restartQuiz = () => {    this.setState({ start: false, endQuiz: false, answeredCorrectly: 0, showNext: true, wrongAnswer: false })
+  restartQuiz = () => {
+    this.setState({ start: false, endQuiz: false, answeredCorrectly: 0, showNext: true, wrongAnswer: false })
   }
-
+  continentQuestionHandler = () => {
+    const index = Math.floor(Math.random() * 200 + 1);
+    const country = this.state.data[index].name;
+    const answer = this.state.data[index].continent;
+    //Get all continents present in data
+    var continents = this.state.data.map((item)=> item.continent)
+    //Get only unique continents
+    var continentsArr = continents.filter((a, b, c) => c.indexOf(a) === b)
+    //Last index of returned continents is an empty string so I'm removing it
+    continentsArr.pop();
+    //Get index of answer and remove it so it doesnt appear twice
+    const i = continentsArr.indexOf(answer);
+    continentsArr.splice(i, 1)
+    console.log("options", continentsArr)
+    //set list to receive options
+    const list = [
+      { option: answer, status: '' },
+      { option: continentsArr[0], status: '' },
+      { option: continentsArr[1], status: '' },
+      { option: continentsArr[2], status: '' }
+    ];
+    const options = list.sort(() => Math.random() - 0.5)
+    this.setState({
+      quizData: {
+        value: country,
+        type: 'continent',
+        question: 'belongs to which region?',
+        status: '',
+        answers: options,
+        answer: answer
+      }
+    })
+  }
   capitalQuestionHandler = () => {
     const index = Math.floor(Math.random() * 200 + 1);
     const capital = this.state.data[index].capital;
     const answer = this.state.data[index].name;
     const list = [
-      { option: answer, status: '' }, 
-      { option: this.state.data[index + 1].name, status: '' }, 
-      { option: this.state.data[index + 2].name, status: '' }, 
+      { option: answer, status: '' },
+      { option: this.state.data[index + 1].name, status: '' },
+      { option: this.state.data[index + 2].name, status: '' },
       { option: this.state.data[index + 3].name, status: '' }
     ];
     const options = list.sort(() => Math.random() - 0.5)
     this.setState({
-      quizData: { 
-        value: capital, 
-        type: 'capital', question: 'is the capital of', status: '', answers: options, answer: answer } })
+      quizData: {
+        value: capital,
+        type: 'capital',
+        question: 'is the capital of',
+        status: '',
+        answers: options,
+        answer: answer
+      }
+    })
     console.log(options)
     console.log(index)
   }
@@ -74,28 +117,29 @@ class Quiz extends Component {
     const flag = this.state.data[index].flag;
     const answer = this.state.data[index].name;
     const list = [
-      { option: answer, status: '' }, 
-      { option: this.state.data[index + 1].name, status: '' }, 
-      { option: this.state.data[index + 2].name, status: '' }, 
+      { option: answer, status: '' },
+      { option: this.state.data[index + 1].name, status: '' },
+      { option: this.state.data[index + 2].name, status: '' },
       { option: this.state.data[index + 3].name, status: '' }
     ];
     const options = list.sort(() => Math.random() - 0.5)
     this.setState({
-      quizData: { 
+      quizData: {
         question: "Which country does this flag belong to?",
         status: '',
-        type: 'flag', 
-        value: flag, 
-        answers: options, 
-        answer: answer 
-      } 
-      })
+        type: 'flag',
+        value: flag,
+        answers: options,
+        answer: answer
+      }
+    })
   }
 
   nextQuestionHandler = () => {
-    let i = Math.floor(Math.random() * 10);
-    if (i > 6) this.capitalQuestionHandler();
-    else this.flagQuestionHandler();
+    let i = Math.floor(Math.random() * 20);
+    if (i > 7) this.capitalQuestionHandler();
+    else if(i > 13) this.flagQuestionHandler();
+    else this.continentQuestionHandler();
     console.log(i);
     this.setState(state => ({
       questionsAnswered: state.questionsAnswered + 1,
